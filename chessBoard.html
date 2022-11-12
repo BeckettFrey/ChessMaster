@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChessBoard</title>
+    <style>
+      #stripe {
+ 
+        margin-bottom: 0px;
+        height: 915px;
+        font-size: 0px;
+        background-image: url("pieces/CHESSBKG.jpg");
+
+      }
+      button {
+        height: 80px;
+        width: 80px;
+        margin-inline: 0px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <img id ="extraBK" src="pieces/bKnight.png" alt="none" width="30px"
+    height="75px" hidden>
+      <img  id ="extraBQ" src="pieces/bQueen.png" alt="none" width="30px"
+      height="75px" hidden>
+      <img id ="extraWK" src="pieces/wKnight.png" alt="none" width="30px"
+      height="75px" hidden>
+      <img id ="extraWQ" src="pieces/wQueen.png" alt="none" width="30px"
+      height="75px" hidden>
+    <div id="stripe">
+      <center>
+        <p>
+          <h1 class="btn"></h1>
+           <button id = "A0">
+            <img id="B" p="rook"
+              src="pieces/bRook.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A1">
+            <img id="B" p="knight"
+              src="pieces/bKnight.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A2">
+            <img id="B" p="bishop"
+              src="pieces/bBishop.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A3">
+            <img id="B" p="king"
+              src="pieces/bKing.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A4">
+            <img id="B" p="queen"
+              src="pieces/bQueen.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A5">
+            <img id="B" p="bishop"
+              src="pieces/bBishop.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "A6">
+            <img id="B" p="knight"
+              src="pieces/bKnight.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="A7">
+            <img  id="B" p="rook"
+              src="pieces/bRook.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+        </p>
+        <p>
+          <button id = "B0">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B1">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B2">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B3">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B4">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B5">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id = "B6">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id ="B7">
+            <img id="B" p="pawn" used="no"
+              src="pieces/bPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+        </p>
+        <p>
+          <button id="C0"></button>
+          <button id="C1"></button>
+          <button id="C2"></button>
+          <button id="C3"></button>
+          <button id="C4"></button>
+          <button id="C5"></button>
+          <button id="C6"></button>
+          <button id="C7"></button>
+        </p>
+        <p>
+          <button id="D0"></button>
+          <button id="D1"></button>
+          <button id="D2"></button>
+          <button id="D3"></button>
+          <button id="D4"></button>
+          <button id="D5"></button>
+          <button id="D6"></button>
+          <button id="D7"></button>
+        </p>
+        <p>
+          <button id="E0"></button>
+          <button id="E1"></button>
+          <button id="E2"></button>
+          <button id="E3"></button>
+          <button id="E4"></button>
+          <button id="E5"></button>
+          <button id="E6"></button>
+          <button id="E7"></button>
+        </p>
+        <p>
+          <button id="F0"></button>
+          <button id="F1"></button>
+          <button id="F2"></button>
+          <button id="F3"></button>
+          <button id="F4"></button>
+          <button id="F5"></button>
+          <button id="F6"></button>
+          <button id="F7"></button>
+        </p>
+        <p>
+          <button id="G0">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G1">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G2">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G3">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G4">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G5">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G6">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="G7">
+            <img id="W" p="pawn" used="no"
+              src="pieces/wPawn.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+        </p>
+        <p>
+          <button id="H0">
+            <img id="W" p="rook" 
+              src="pieces/wRook.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="H1">
+            <img id="W" p="knight"
+              src="pieces/wKnight.png"
+              alt="not found"
+              width="30px"
+              height="75px"
+            />
+          </button>
+          <button id="H2">
+            <img id="W" p="bishop"
+            src="pieces/wBishop.png"
+            alt="not found"
+            width="30px"
+            height="75px"
+          />
+        </button>
+          <button id="H3">
+            <img id="W" p="king"
+            src="pieces/wKing.png"
+            alt="not found"
+            width="30px"
+            height="75px"
+          />
+        </button>
+          <button id="H4">
+            <img id="W" p="queen"
+            src="pieces/wQueen.png"
+            alt="not found"
+            width="30px"
+            height="75px"
+          />
+        </button>
+          <button id="H5">
+            <img id="W" p="bishop"
+            src="pieces/wBishop.png"
+            alt="not found"
+            width="30px"
+            height="75px"
+          />
+        </button>
+            <button id="H6">
+              <img id="W" p="knight"
+                src="pieces/wKnight.png"
+                alt="not found"
+                width="30px"
+                height="75px"
+              />
+            <button id="H7">
+              <img id="W" p="rook"
+                src="pieces/wRook.png"
+                alt="not found"
+                width="30px"
+                height="75px"
+              />
+            </button>
+          
+        </p>
+
+      </center>
+    </div>
+  <p id = "BoardTitle"><h1></h1>
+  </p>
+    <script src="chessBoard.js"></script>
+
+  </body>
+
+</html>

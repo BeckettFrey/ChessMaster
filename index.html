@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ChessMasters</title>
+</head>
+<body>
+  <style>
+    .my-container {
+  position: relative;
+  background: white;
+  overflow: hidden ;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url('CHESSBKG2.jpeg');
+}
+.my-container:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 1;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+    h1 {
+      padding: 10px 20px;
+      display: inline-block;
+      font-family: fantasy;
+      font-size: xx-large;
+    }
+    button {
+      background-color: grey;
+      border-radius: 8px;
+    }
+    h2 {
+      font-size: x-large;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+
+<body class = "my-container">
+ 
+  <center>
+    <h1>The Game of Chess</h1>
+    <p>
+      <button>
+        <h2 id="RevBtn">Review Rules</h2>
+      </button>
+    </p>
+    <p>
+      <button>
+        <h2 id="Playbtn">Play</h2>
+      </button>
+    </p>
+  </center>
+</body>
+<script src="index.js"></script>
+  
+</body>
+</html>
