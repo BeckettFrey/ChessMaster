@@ -664,7 +664,6 @@ for (let i = 0; i < 64; i++) {
 var swtch = false;
 //event1on();
 function selectPiece(place) {
-  if()
   console.log("select1");
   oneSelected = place;
   console.log(oneSelected);
