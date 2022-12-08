@@ -1,3 +1,10 @@
+for (let i = 0; i < 32; i++) {
+  document.getElementById(int2grid(i)).style.backgroundColor = "white";
+}
+for (let j = 32; j < 64; j++) {
+  document.getElementById(int2grid(j)).style.backgroundColor = "black";
+}
+//Turn starting blocks white/ black.
 //Helper Methods.
 //var colorTurn = "w";
 function containsPiece(coordinate) {
@@ -94,33 +101,55 @@ function pawnToQueen(TO) {
   }
 }
 //Returns Boolean True if legit move, false if not. Erases conquered pieces.
-
+function oppositeColo(colo) {
+  if (colo == "W") {
+    return "B";
+  } else {
+    return "W";
+  }
+}
 //Passed from ^^^
+var coloMove = "W";
+
 function moveInit(FR, TO) {
   var skip = false;
-  if (!checkAndAlterDestination(TO, FR)) {
-    alert("No dice!");
-  } else {
-    if (verPmove(FR, TO)) {
-      if (
-        document.getElementById(FR).childNodes[1].getAttribute("p") == "pawn"
-      ) {
-        if (checkEndZone(FR, TO) == true) {
-          skip = true;
+  if (document.getElementById(FR).childNodes[1].id == coloMove) {
+    if (!checkAndAlterDestination(TO, FR)) {
+      alert("No dice!");
+    } else {
+      if (verPmove(FR, TO)) {
+        coloMove = oppositeColo(coloMove);
+        if (document.getElementById(FR).childNodes[1].id == "W") {
+          document.getElementById(TO).style.backgroundColor = "black";
+        } else {
+          document.getElementById(TO).style.backgroundColor = "white";
         }
-      }
-      var newParent = document.getElementById(TO);
-      var oldParent = document.getElementById(FR);
-      if (skip == false) {
-        if (containsPiece(TO)) {
-          while (newParent.childNodes.length > 0) {
-            newParent.childNodes[0].remove();
+        if (
+          document.getElementById(FR).childNodes[1].getAttribute("p") == "pawn"
+        ) {
+          if (checkEndZone(FR, TO) == true) {
+            skip = true;
           }
         }
-        move(oldParent, newParent);
+        var newParent = document.getElementById(TO);
+        var oldParent = document.getElementById(FR);
+        if (skip == false) {
+          if (containsPiece(TO)) {
+            while (newParent.childNodes.length > 0) {
+              newParent.childNodes[0].remove();
+            }
+          }
+          move(oldParent, newParent);
+        }
+      } else {
+        alert("Take another look at the rules.");
       }
+    }
+  } else {
+    if (coloMove == "W") {
+      alert("White's move.");
     } else {
-      alert("Take another look at the rules.");
+      alert("Blacks's move.");
     }
   }
 }
@@ -155,6 +184,8 @@ function checkAndAlterDestination(iD, moveriD) {
 //Passes to specific piece function. Assumes empty or opposite color obtaining space.
 function verPmove(FR, TO) {
   let peace = document.getElementById(FR).childNodes[1].getAttribute("p");
+  console.log(FR);
+
   switch (peace) {
     case "pawn":
       return movePawn(FR, TO);
@@ -164,6 +195,8 @@ function verPmove(FR, TO) {
 
       break;
     case "knight":
+      console.log(moveKnight(FR, TO));
+      console.log("knightt");
       return moveKnight(FR, TO);
 
       break;
@@ -389,7 +422,8 @@ function moveKnight(FR, TO) {
   var chars1 = FR.split("");
   var tf = false;
   let counter = 2;
-  while (chars1[0] != "i" && chars1[1] < 8 && counter > 0) {
+  while (chars1[0] != "I" && chars1[1] < 8 && counter > 0) {
+    console.log(1);
     if (counter == 2) {
       chars1[0] = nextChar(chars1[0]);
     }
@@ -422,10 +456,26 @@ function moveKnight(FR, TO) {
   counter = 2;
   chars1 = FR.split("");
   while (chars1[0] != "'" && chars1[1] < 8 && counter > 0) {
+    chars1[0] = prevChar(chars1[0]);
     if (counter == 2) {
-      chars1[0] = prevChar(chars1[0]);
+      chars1[1]--;
     }
-    chars1[1]++;
+    counter--;
+    if (counter == 0) {
+      origin = chars1[0] + chars1[1];
+    }
+  }
+  if (origin == TO) {
+    tf = true;
+  }
+  origin = 0;
+  counter = 2;
+  chars1 = FR.split("");
+  while (chars1[0] != "'" && chars1[1] < 8 && counter > 0) {
+    chars1[0] = prevChar(chars1[0]);
+    if (counter == 2) {
+      chars1[1]++;
+    }
     counter--;
     if (counter == 0) {
       origin = chars1[0] + chars1[1];
@@ -441,7 +491,7 @@ function moveKnight(FR, TO) {
     if (counter == 2) {
       chars1[0] = prevChar(chars1[0]);
     }
-    chars1[1]++;
+    chars1[1]--;
     counter--;
     if (counter == 0) {
       origin = chars1[0] + chars1[1];
@@ -504,10 +554,12 @@ function moveKnight(FR, TO) {
   counter = 2;
   chars1 = FR.split("");
   while (chars1[0] != "'" && chars1[1] < 8 && counter > 0) {
-    chars1[0] = prevChar(chars1[0]);
     if (counter == 2) {
-      chars1[1]++;
+      chars1[0] = prevChar(chars1[0]);
     }
+
+    chars1[1]++;
+
     counter--;
     if (counter == 0) {
       origin = chars1[0] + chars1[1];
@@ -602,8 +654,9 @@ function moveBishop(FR, TO) {
   chars1[0] = prevChar(chars1[0]);
   chars1[1] -= 1;
 
-  while (chars1[0] != "'" && chars1[1] >= 0) {
+  while (chars1[0] != "@" && chars1[1] >= 0) {
     origin = chars1[0] + chars1[1];
+    console.log(origin);
     if (origin == TO) {
       tf = true;
       break;
@@ -625,8 +678,9 @@ function moveBishop(FR, TO) {
   }
   chars1 = FR.split("");
   chars1[0] = nextChar(chars1[0]);
+  chars1[1]++;
   chars1[1] -= 1;
-
+  chars1[1] -= 1;
   while (chars1[0] != "I" && chars1[1] >= 0) {
     origin = chars1[0] + chars1[1];
     if (origin == TO) {
@@ -656,15 +710,19 @@ function moveBishop(FR, TO) {
 // Click event listeners for each block.
 //
 //
-var oneSelected;
 let space = document.querySelectorAll("button");
 for (let i = 0; i < 64; i++) {
-  space[i].removeEventListener("click", () => selectPiece(int2grid(i)));
+  space[i].addEventListener("click", () => selectPiece(int2grid(i)));
 }
+var oneSelected;
 var swtch = false;
 //event1on();
 function selectPiece(place) {
-  console.log("select1");
-  oneSelected = place;
-  console.log(oneSelected);
+  if (swtch == false) {
+    oneSelected = place;
+    swtch = true;
+  } else {
+    swtch = false;
+    moveInit(oneSelected, place);
+  }
 }
